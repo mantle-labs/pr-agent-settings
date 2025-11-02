@@ -1,0 +1,39 @@
+[merge]
+trigger = "pull_request_opened"
+target_branches = ["main", "develop", "master"]
+review_draft_prs = true
+max_diff_size = "500 lines" 
+re_review_on_update = true
+
+max_comments = 5
+
+enable_scoring = true
+score_scale = 100
+reject_score = 85
+approve_score = 85
+
+[merge.behavior]
+auto_comment = true
+auto_approve = true
+auto_reject = true
+
+# Strict style configuration
+[merge.style]
+tone = "strict"
+# Enforces short, direct comments with clear actions
+comment_format = "concise"
+# Removes soft language like "consider" / "maybe"
+hedging = false
+# Avoids compliments; focuses on issues and corrections
+praise = false
+
+# Review focus areas
+[merge.review_rules]
+clarity = true
+readability = true
+maintainability = true
+security = true
+complexity = true
+
+[merge.test_requirements]
+require_tests_for_new_code = false
