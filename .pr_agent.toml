@@ -44,6 +44,7 @@ tone = "strict"
 comment_format = "concise"
 hedging = false
 praise = false
+persistent_comment = false
 focus_areas = [
   "clarity",
   "readability",
