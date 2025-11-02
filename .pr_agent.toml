@@ -41,7 +41,6 @@ require_security_review = true
 # STRICT REVIEW STYLE
 [pr_reviewer.extra]
 tone = "strict"
-comment_format = "concise"
 hedging = false
 praise = false
 persistent_comment = false
