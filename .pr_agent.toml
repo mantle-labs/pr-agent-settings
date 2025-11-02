@@ -1,39 +1,68 @@
-[merge]
-trigger = "pull_request_opened"
-target_branches = ["main", "develop", "master"]
-review_draft_prs = true
-max_diff_size = "500 lines" 
-re_review_on_update = true
+[config]
+git_provider = "github"
+publish_output = true
+publish_output_progress = true
 
-max_comments = 5
-
-enable_scoring = true
+# Scoring mapping (friendly 0–100 scale)
 score_scale = 100
-reject_score = 85
 approve_score = 85
+reject_score = 85
 
-[merge.behavior]
-auto_comment = true
-auto_approve = true
-auto_reject = true
+# Allow auto decisions based on score
+enable_auto_approval = true
 
-# Strict style configuration
-[merge.style]
+[github_app]
+# Run automatically when PR is opened
+handle_pr_actions = ["opened", "reopened", "ready_for_review", "draft"]
+
+# Also allow manual triggers
+pr_commands = [
+  "/review",
+  "/describe --pr_description.final_update_message=false",
+  "/improve"
+]
+
+# Re-review behavior on pushes
+handle_push_trigger = true
+push_trigger_pending_tasks_ttl = 300
+
+
+[pr_reviewer]
+# Max review findings
+num_max_findings = 5
+
+# Always produce a numeric score in the review
+require_score_review = true
+
+# These enforce strong review scope
+require_security_review = true
+
+
+# STRICT REVIEW STYLE
+[pr_reviewer.extra]
 tone = "strict"
-# Enforces short, direct comments with clear actions
 comment_format = "concise"
-# Removes soft language like "consider" / "maybe"
 hedging = false
-# Avoids compliments; focuses on issues and corrections
 praise = false
+focus_areas = [
+  "clarity",
+  "readability",
+  "maintainability",
+  "security",
+  "complexity",
+]
 
-# Review focus areas
-[merge.review_rules]
-clarity = true
-readability = true
-maintainability = true
-security = true
-complexity = true
 
-[merge.test_requirements]
-require_tests_for_new_code = false
+[pr_code_suggestions]
+# Use the new scoring engine (0-10 internally → mapped to 0-100)
+new_score_mechanism = true
+new_score_mechanism_th_high = 9
+new_score_mechanism_th_medium = 7
+
+max_history_len = 4
+
+
+[pr_description]
+add_original_user_description = true
+use_bullet_points = true
+enable_large_pr_handling = true
