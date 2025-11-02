@@ -66,3 +66,11 @@ max_history_len = 4
 add_original_user_description = true
 use_bullet_points = true
 enable_large_pr_handling = true
+
+[labeler]
+enable = true
+score_label_prefix = "score/"
+replace_existing_score_labels = true
+remove_score_labels_on_update = true
+score_scale = 100
+round_score_to = 0
