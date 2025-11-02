@@ -6,10 +6,11 @@ publish_output_progress = true
 # Scoring mapping (friendly 0–100 scale)
 score_scale = 100
 approve_score = 85
-reject_score = 85
+reject_score = 84
 
 # Allow auto decisions based on score
 enable_auto_approval = true
+enable_auto_rejection = true
 
 [github_app]
 # Run automatically when PR is opened
