@@ -37,22 +37,19 @@ require_score_review = true
 
 # These enforce strong review scope
 require_security_review = true
+persistent_comment = false
 
 
 # STRICT REVIEW STYLE
-[pr_reviewer.extra]
-tone = "strict"
-hedging = false
-praise = false
-persistent_comment = false
-focus_areas = [
-  "clarity",
-  "readability",
-  "maintainability",
-  "security",
-  "complexity",
-]
-
+extra_instructions = """
+Please use a **strict, critical, and formal tone** for the review. 
+Your feedback must primarily focus on the following core areas: 
+- clarity
+- readability
+- maintainability
+- security
+- complexity
+"""
 
 [pr_code_suggestions]
 # Use the new scoring engine (0-10 internally → mapped to 0-100)
