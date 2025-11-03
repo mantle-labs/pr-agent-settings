@@ -59,8 +59,11 @@ focus_areas = [
 new_score_mechanism = true
 new_score_mechanism_th_high = 9
 new_score_mechanism_th_medium = 7
-
+persistent_comment=false
+auto_extended_mode=true
+num_code_suggestions_per_chunk = 5
 max_history_len = 4
+suggestions_score_threshold=6 # [0-10]| recommend not to set this value above 8, since above it may clip highly relevant suggestions
 
 
 [pr_description]
